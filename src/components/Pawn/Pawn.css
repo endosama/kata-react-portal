@@ -1,0 +1,58 @@
+:root {
+  --pawn-margin: 5px;
+  --pawn-margin-i: -5px;
+}
+
+.pawn {
+  position: relative;
+  min-width: 60px;
+  min-height: 60px;
+  max-width: 60px;
+  max-height: 60px;
+  margin: var(--pawn-margin);
+  background-color: #d27765;
+  border-radius: 50%;
+}
+
+.pawn-move {
+  position: absolute;
+  visibility: hidden;
+  cursor: pointer;
+}
+
+.pawn-move > span {
+  padding: 1px 3px;
+  width: 10px;
+  background-color: #282c34;
+  border-radius: 2px;
+  color: white;
+  font-size: smaller;
+}
+.pawn-move-up {
+  top: var(--pawn-margin-i);
+  width: 100%;
+  margin: 0 auto;
+}
+.pawn-move-down {
+  bottom: var(--pawn-margin-i);
+  width: 100%;
+  margin: 0 auto;
+}
+.pawn-move-right {
+  right: var(--pawn-margin-i);
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.pawn-move-left {
+  left: var(--pawn-margin-i);
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.pawn-move-container:hover > .pawn-move {
+  visibility: visible;
+}
