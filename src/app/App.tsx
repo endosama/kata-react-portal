@@ -2,6 +2,7 @@ import React from "react"
 import { KataDescription } from "../components/KataDescription/KataDescription"
 import { KataCode } from "../components/KataCode/KataCode"
 import "./App.css"
+import { CheckerContextProvider } from "../contexts/CheckerContext"
 
 function App() {
   return (
@@ -10,7 +11,9 @@ function App() {
         <KataDescription />
       </header>
       <main className="App-main">
-        <KataCode />
+        <CheckerContextProvider>
+          <KataCode />
+        </CheckerContextProvider>
       </main>
     </div>
   )

@@ -1,6 +1,12 @@
 import { PawnProps } from "../types/Pawn"
+type Pawn = {
+  x: number
+  y: number
+  color: "black" | "white"
+  isAlive: boolean
+}
 
-export const pawns: PawnProps[] = [
+const pawnsNoIndex: Pawn[] = [
   { x: 0, y: 0, isAlive: true, color: "black" },
   { x: 0, y: 2, isAlive: true, color: "black" },
   { x: 0, y: 4, isAlive: true, color: "black" },
@@ -27,3 +33,10 @@ export const pawns: PawnProps[] = [
   { x: 7, y: 5, isAlive: true, color: "white" },
   { x: 7, y: 7, isAlive: true, color: "white" },
 ]
+export const pawns: PawnProps[] = pawnsNoIndex.map((pawn, i) => {
+  return {
+    ...pawn,
+    index: i,
+    isDouble: false,
+  }
+})

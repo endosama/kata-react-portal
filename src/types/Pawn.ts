@@ -1,8 +1,10 @@
-export type PawnColor = "black" | "white";
+export type PawnColor = "black" | "white"
 
 export interface PawnProps {
-    x: number;
-    y: number;
-    color: PawnColor;
-    isAlive: boolean;
-} 
+  index: number
+  x: number
+  y: number
+  color: PawnColor
+  isAlive: boolean
+  isDouble: boolean
+}

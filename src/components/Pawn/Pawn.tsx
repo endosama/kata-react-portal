@@ -4,93 +4,77 @@ import { faChevronUp } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { PawnProps } from "../../types/Pawn"
 import ReactDOM from "react-dom"
-
-type Position = {
-  x: number
-  y: number
-}
+import { useCheckerContext } from "../../contexts/CheckerContext"
+import { MovementType } from "../../types/MovementType"
+import { Position } from "../../types/Position"
 
 interface PawnControlsProps {
-  position: Position
-  setPosition: (p: Position) => void
+  pawn: PawnProps
 }
 
-const PawnControls: React.FC<PawnControlsProps> = ({
-  position,
-  setPosition,
-}) => {
-  const setPositionWithLimits = ({ x, y }: Position) => {
-    let actualX = x
-    let actualY = y
-    if (x > 7) actualX = 7
-    if (x < 0) actualX = 0
-    if (y > 7) actualY = 7
-    if (y < 0) actualY = 0
-    console.log(`Moving ${position.x},${position.y} to ${actualX},${actualY}`)
-    setPosition({ x: actualX, y: actualY })
-  }
+const PawnControls: React.FC<PawnControlsProps> = ({ pawn }) => {
+  const { getValidMovements, movePawn } = useCheckerContext()
+  const validMovements = getValidMovements(pawn)
   return (
     <div className="pawn-move-container">
-      <div
-        onClick={() =>
-          setPositionWithLimits({ x: position.x - 1, y: position.y - 1 })
-        }
-        className="pawn-move pawn-move-lt"
-      >
-        <FontAwesomeIcon icon={faChevronUp} />
-      </div>
-      <div
-        onClick={() =>
-          setPositionWithLimits({ x: position.x + 1, y: position.y - 1 })
-        }
-        className="pawn-move pawn-move-lb"
-      >
-        <FontAwesomeIcon icon={faChevronUp} />
-      </div>
-      <div
-        onClick={() =>
-          setPositionWithLimits({ x: position.x + 1, y: position.y + 1 })
-        }
-        className="pawn-move pawn-move-rb"
-      >
-        <FontAwesomeIcon icon={faChevronUp} />
-      </div>
-      <div
-        onClick={() =>
-          setPositionWithLimits({ x: position.x - 1, y: position.y + 1 })
-        }
-        className="pawn-move pawn-move-rt"
-      >
-        <FontAwesomeIcon icon={faChevronUp} />
-      </div>
+      {validMovements[MovementType.LT] && (
+        <div
+          onClick={() => movePawn(pawn, validMovements[MovementType.LT])}
+          className="pawn-move pawn-move-lt"
+        >
+          <FontAwesomeIcon icon={faChevronUp} />
+        </div>
+      )}
+      {validMovements[MovementType.LB] && (
+        <div
+          onClick={() => movePawn(pawn, validMovements[MovementType.LB])}
+          className="pawn-move pawn-move-lb"
+        >
+          <FontAwesomeIcon icon={faChevronUp} />
+        </div>
+      )}
+      {validMovements[MovementType.RB] && (
+        <div
+          onClick={() => movePawn(pawn, validMovements[MovementType.RB])}
+          className="pawn-move pawn-move-rb"
+        >
+          <FontAwesomeIcon icon={faChevronUp} />
+        </div>
+      )}
+      {validMovements[MovementType.RT] && (
+        <div
+          onClick={() => movePawn(pawn, validMovements[MovementType.RT])}
+          className="pawn-move pawn-move-rt"
+        >
+          <FontAwesomeIcon icon={faChevronUp} />
+        </div>
+      )}
     </div>
   )
 }
 
-const Pawn: React.FC<Partial<PawnProps>> = (props = {}) => {
-  const [position, setPosition] = useState({ x: props.x, y: props.y })
+const Pawn: React.FC<{ pawn: PawnProps }> = ({ pawn }) => {
+  const [currentPawn, setCurrentPawn] = useState(pawn)
   const cell = document.getElementById(
-    `chessboard-cell-${position.x}-${position.y}`
+    `chessboard-cell-${currentPawn.x}-${currentPawn.y}`
   )
   return (
     <>
-      {position.x !== undefined && position.y !== undefined && cell ? (
-        ReactDOM.createPortal(
-          <div
-            className={`pawn ${props.color === "black" ? "pawn-black" : ""}`}
-          >
-            <PawnControls
-              position={{
-                x: position.x || 0,
-                y: position.y || 0,
-              }}
-              setPosition={setPosition}
-            />
-          </div>,
-          cell
-        )
-      ) : (
-        <div className="pawn" />
+      {pawn.isAlive && (
+        <>
+          {pawn.x !== undefined && pawn.y !== undefined && cell ? (
+            ReactDOM.createPortal(
+              <div
+                className={`pawn ${pawn.color === "black" ? "pawn-black" : ""}`}
+              >
+                <PawnControls pawn={currentPawn} />
+              </div>,
+              cell
+            )
+          ) : (
+            <div className="pawn" />
+          )}
+        </>
       )}
     </>
   )

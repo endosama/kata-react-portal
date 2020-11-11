@@ -27,7 +27,7 @@ export const KataDescription = () => {
         }}
       >
         Let's implement Checkers
-        <Pawn />
+        <Pawn pawn={{ isAlive: true } as any} />
       </p>
       <div style={{ fontSize: "18px" }}>
         <ul style={{ textAlign: "left" }}>
