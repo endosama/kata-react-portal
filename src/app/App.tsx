@@ -1,6 +1,6 @@
 import React from "react"
 import { KataDescription } from "../components/KataDescription/KataDescription"
-import { KataCode } from "../components/Pawn/KataCode/KataCode"
+import { KataCode } from "../components/KataCode/KataCode"
 import "./App.css"
 
 function App() {

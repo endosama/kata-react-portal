@@ -1,6 +1,6 @@
 export type PawnColor = "black" | "white";
 
-export interface Pawn {
+export interface PawnProps {
     x: number;
     y: number;
     color: PawnColor;

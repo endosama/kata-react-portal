@@ -14,6 +14,10 @@
   border-radius: 50%;
 }
 
+.pawn-black {
+  background-color: #65b6d2;
+}
+
 .pawn-move {
   position: absolute;
   visibility: hidden;
@@ -28,29 +32,30 @@
   color: white;
   font-size: smaller;
 }
-.pawn-move-up {
-  top: var(--pawn-margin-i);
-  width: 100%;
-  margin: 0 auto;
-}
-.pawn-move-down {
-  bottom: var(--pawn-margin-i);
-  width: 100%;
-  margin: 0 auto;
-}
-.pawn-move-right {
-  right: var(--pawn-margin-i);
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.pawn-move-left {
+.pawn-move-lt {
   left: var(--pawn-margin-i);
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  top: var(--pawn-margin-i);
+  transform: rotate(-45deg);
+}
+.pawn-move-lb {
+  left: var(--pawn-margin-i);
+  bottom: var(--pawn-margin-i);
+  transform: rotate(-135deg);
+}
+.pawn-move-rb {
+  right: var(--pawn-margin-i);
+  bottom: var(--pawn-margin-i);
+  transform: rotate(-225deg);
+}
+.pawn-move-rt {
+  right: var(--pawn-margin-i);
+  top: var(--pawn-margin-i);
+  transform: rotate(45deg);
+}
+
+.pawn-move-container {
+  min-width: 60px;
+  min-height: 60px;
 }
 
 .pawn-move-container:hover > .pawn-move {

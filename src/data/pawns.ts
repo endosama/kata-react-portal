@@ -1,6 +1,6 @@
-import { Pawn } from "../types/Pawn"
+import { PawnProps } from "../types/Pawn"
 
-export const pawns: Pawn[] = [
+export const pawns: PawnProps[] = [
   { x: 0, y: 0, isAlive: true, color: "black" },
   { x: 0, y: 2, isAlive: true, color: "black" },
   { x: 0, y: 4, isAlive: true, color: "black" },
