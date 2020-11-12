@@ -1,6 +1,6 @@
 export enum MovementType {
-  LT,
-  LB,
-  RB,
-  RT,
+    LT,
+    LB,
+    RB,
+    RT,
 }
