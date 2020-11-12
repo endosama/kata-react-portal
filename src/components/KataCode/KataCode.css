@@ -1,0 +1,11 @@
+.message-box {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 400px;
+  margin: 10px;
+}
+.message-box .pawn {
+  box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.3);
+}

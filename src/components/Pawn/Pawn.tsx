@@ -54,25 +54,27 @@ const PawnControls: React.FC<PawnControlsProps> = ({ pawn }) => {
 }
 
 const Pawn: React.FC<{ pawn: PawnProps }> = ({ pawn }) => {
-  const [currentPawn, setCurrentPawn] = useState(pawn)
-  const cell = document.getElementById(
-    `chessboard-cell-${currentPawn.x}-${currentPawn.y}`
-  )
+  const cell = document.getElementById(`chessboard-cell-${pawn.x}-${pawn.y}`)
   return (
     <>
       {pawn.isAlive && (
         <>
           {pawn.x !== undefined && pawn.y !== undefined && cell ? (
             ReactDOM.createPortal(
-              <div
-                className={`pawn ${pawn.color === "black" ? "pawn-black" : ""}`}
-              >
-                <PawnControls pawn={currentPawn} />
+              <div className="pawn-container">
+                <div
+                  className={`pawn ${
+                    pawn.color === "black" ? "pawn-black" : ""
+                  } ${pawn.isDouble ? "pawn-double" : ""}`}
+                />
+                <PawnControls pawn={pawn} />
               </div>,
               cell
             )
           ) : (
-            <div className="pawn" />
+            <div
+              className={`pawn ${pawn.color === "black" ? "pawn-black" : ""}`}
+            />
           )}
         </>
       )}
