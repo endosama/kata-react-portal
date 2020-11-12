@@ -1,0 +1,46 @@
+.pawn-move {
+    position: absolute;
+    visibility: hidden;
+    cursor: pointer;
+}
+
+.pawn-move > span {
+    padding: 1px 3px;
+    width: 10px;
+    background-color: #282c34;
+    border-radius: 2px;
+    color: white;
+    font-size: smaller;
+}
+.pawn-move-lt {
+    left: var(--pawn-margin-i);
+    top: var(--pawn-margin-i);
+    transform: rotate(-45deg);
+}
+.pawn-move-lb {
+    left: var(--pawn-margin-i);
+    bottom: var(--pawn-margin-i);
+    transform: rotate(-135deg);
+}
+.pawn-move-rb {
+    right: var(--pawn-margin-i);
+    bottom: var(--pawn-margin-i);
+    transform: rotate(-225deg);
+}
+.pawn-move-rt {
+    right: var(--pawn-margin-i);
+    top: var(--pawn-margin-i);
+    transform: rotate(45deg);
+}
+
+.pawn-move-container {
+    position: absolute;
+    top: 0;
+    margin: var(--pawn-margin);
+    min-width: 60px;
+    min-height: 60px;
+}
+
+.pawn-move-container:hover > .pawn-move {
+    visibility: visible;
+}
