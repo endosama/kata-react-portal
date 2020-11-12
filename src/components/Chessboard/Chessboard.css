@@ -1,0 +1,30 @@
+.chessboard-grid {
+  display: grid;
+  max-width: calc(70px * 8);
+  max-height: calc(70px * 8);
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  gap: 0px 0px;
+  grid-template-areas:
+    ". . . . . . . ."
+    ". . . . . . . ."
+    ". . . . . . . ."
+    ". . . . . . . ."
+    ". . . . . . . ."
+    ". . . . . . . ."
+    ". . . . . . . ."
+    ". . . . . . . .";
+}
+
+.chessboard-cell {
+  min-width: 70px;
+  min-height: 70px;
+}
+
+.chessboard-cell-black {
+  background: #232323;
+}
+
+.chessboard-cell-white {
+  background: #fffff2;
+}

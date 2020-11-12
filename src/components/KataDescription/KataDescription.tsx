@@ -26,9 +26,6 @@ export const KataDescription = (): JSX.Element => {
             <div style={{ fontSize: "18px" }}>
                 <ul style={{ textAlign: "left" }}>
                     <li>
-                        Create a <CodeComponent>Chessboard</CodeComponent> component
-                    </li>
-                    <li>
                         Place a <CodeComponent>Pawn</CodeComponent> component on the&nbsp;
                         <CodeComponent>Chessboard</CodeComponent> using&nbsp;
                         <CodeFunction>ReactDOM.Portals</CodeFunction>{" "}
@@ -47,19 +44,10 @@ export const KataDescription = (): JSX.Element => {
                     changes.
                 </p>
                 <p style={{ textAlign: "left", fontSize: "14px" }}>
-                    {"Create the Chessboard component so that's easy to find a square depending on its coordinares "}
-                    <code>(x,y)</code>
-                </p>
-                <p style={{ textAlign: "left", fontSize: "14px" }}>
                     Inside the <CodeComponent>Pawn</CodeComponent> component file is already implemented a component
                     <CodeComponent>PawnControls</CodeComponent> that allows to change the actual coordinates of a Pawn.
                     This may be useful for testing. Use it in your <CodeComponent>Pawn</CodeComponent> component
                     implementation.
-                </p>
-
-                <p style={{ textAlign: "left", fontSize: "14px" }}>
-                    All the css styles needed should be already implemented (except the{" "}
-                    <CodeComponent>Chessboard</CodeComponent> ones).
                 </p>
 
                 <p style={{ textAlign: "left", fontSize: "14px" }}>
