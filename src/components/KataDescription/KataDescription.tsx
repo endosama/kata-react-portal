@@ -50,25 +50,39 @@ export const KataDescription = (): JSX.Element => {
                     {"Create the Chessboard component so that's easy to find a square depending on its coordinares "}
                     <code>(x,y)</code>
                 </p>
-                <p style={{ textAlign: "left", fontSize: "14px" }}>
-                    Inside the <CodeComponent>Pawn</CodeComponent> component file is already implemented a component
-                    <CodeComponent>PawnControls</CodeComponent> that allows to change the actual coordinates of a Pawn.
-                    This may be useful for testing. Use it in your <CodeComponent>Pawn</CodeComponent> component
-                    implementation.
-                </p>
 
                 <p style={{ textAlign: "left", fontSize: "14px" }}>
                     All the css styles needed should be already implemented (except the{" "}
-                    <CodeComponent>Chessboard</CodeComponent> ones).
+                    <CodeComponent>Chessboard</CodeComponent> ones).{" "}
+                    {"If you don't want to spend too much time on styling "}
+                    you can find the css code (and also the component implementation in a feature branch{" "}
+                    <CodeFunction>kata/checkboard</CodeFunction>... yeah, the name is wrong 🤦‍♂️)
                 </p>
 
                 <p style={{ textAlign: "left", fontSize: "14px" }}>
-                    Documentation for <CodeFunction>ReactDOM.Portals</CodeFunction> can be found here:{" "}
-                    <a href="https://reactjs.org/docs/portals.html" style={{ color: "#82b1af" }}>
-                        https://reactjs.org/docs/portals.html
-                    </a>
+                    The movement logic for the pawns on the chessboard is already implemented in the{" "}
+                    <CodeComponent>PawnControls</CodeComponent> component that consumes a{" "}
+                    <CodeFunction>CheckerContext</CodeFunction> with all the logic and the updated on the board state.
+                    Some arrows will be shown over the <CodeComponent>Pawn</CodeComponent> when hovering it. This arrow
+                    will allow you to change the coordinates of the pawn and to test you code.
                 </p>
             </div>
+            <p style={{ textAlign: "left", fontSize: "14px" }}>
+                Documentation for <CodeFunction>ReactDOM.Portals</CodeFunction> can be found here:{" "}
+                <a href="https://reactjs.org/docs/portals.html" style={{ color: "#82b1af" }}>
+                    https://reactjs.org/docs/portals.html
+                </a>
+            </p>
+            {/* <div
+                style={{
+                    position: "absolute",
+                    bottom: 30,
+                    left: 30,
+                    fontSize: "12px",
+                }}
+            >
+                <p>The actual implementation is not tested and may contain errors</p>
+            </div> */}
         </>
     );
 };

@@ -1,13 +1,27 @@
 import { useState } from "react";
-import { pawns } from "../data/pawns";
+// import { pawns } from "../data/pawns";
 import constate from "constate";
 import { PawnProps } from "../types/Pawn";
 import { MovementType } from "../types/MovementType";
 import { PawnMovement } from "../types/PawnMovement";
 import { calculateChessboardMap, isOnBoard, isSameColor } from "./checkerUtils";
 
-const useCheckerHook = () => {
-    const [actualPawns, setActualPawns] = useState(pawns);
+interface PawnContextValues {
+    /* array of pawns to render on the board */
+    pawns: PawnProps[];
+    /* move the pawn to the specific position. Triggers eat logic */
+    movePawn: (pawn: PawnProps, movement?: PawnMovement) => void;
+    /* get the list of valid movement for the current pawn. Depends on:
+        - the pawn color
+        - the pawn position
+        - the current state of the board
+    */
+    getValidMovements: (pawn: PawnProps) => Partial<{ [key in MovementType]: PawnMovement }>;
+    currentTurn: number;
+}
+
+const useCheckerHook = (): PawnContextValues => {
+    const [actualPawns, setActualPawns] = useState<PawnProps[]>([]);
     const [currentTurn, increaseTurn] = useState(0);
     const [chessboardMap, setChessboardMap] = useState(calculateChessboardMap(actualPawns));
 
